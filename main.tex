@@ -1,16 +1,39 @@
-\documentclass[review]{elsarticle}
-
+\documentclass[conference]{IEEEtran}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{lineno,hyperref}
 
 %% `Elsevier LaTeX' style
-\bibliographystyle{elsarticle-num}
+\bibliographystyle{IEEEtran}
 
+\newcommand{\info}[1]{Department of Mechanical Engineering, University of S\~ao Paulo at S\~ao Carlos School of Engineering, S\~ao Carlos, Brazil. }
+\newcommand{\email}[1]{email: #1}
 \begin{document}
-\begin{frontmatter}
+%\begin{frontmatter}
 \title{Bipedal robot walking using reinforcement learning}
-\author{Jhon Charaja}
-\author{Luca Borgonovi}
+
+\author{
+\begin{minipage}{0.40\textwidth}
+	\centering
+	Jhon Charaja \\
+	\small{\textit{Department of Mechanical Engineering, University of S\~ao Paulo at S\~ao Carlos School of Engineering, S\~ao Carlos, Brazil.} } \\
+	\email{jhon.charaja@usp.br}
+\end{minipage}
+\hfill
+\begin{minipage}{0.40\textwidth}
+	\centering
+	Luca Borgonovi \\
+	\small{\textit{Department of Mechanical Engineering, University of S\~ao Paulo at S\~ao Carlos School of Engineering, S\~ao Carlos, Brazil.} } \\
+	\email{lucaborgonovi@usp.br}
+\end{minipage}
+}
+	
+\maketitle
 \input{sections/abstract.tex}
-\end{frontmatter}
 
 \input{sections/section_1}
 \input{sections/section_2}
@@ -19,5 +42,6 @@
 
 % bibliography
 \bibliography{mybibfile}
+
 	
 \end{document}

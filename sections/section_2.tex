@@ -20,14 +20,7 @@ The sum of the accumulated rewards from an initial state $s_t$ is the standard w
 \noindent where $r_t$ is the reward at time $t$, $\gamma$ is a discounted term and $s_t$ is the initial agent's state. However, calculating the value function requires the agent to start in all available states of the environment and in complex activities this can require a large amount of storage and computational cost. For this reason, more recent work uses deep neural networks to estimate the value function and optimal policy \cite{henderson2018deep}.
 
 
-
-\section{Deep reinforcement learning}
-Deep reinforcement learning represent the combination of deep neural networks with reinforcement learning framework \cite{li2017deep}. Deep neural networks estimate the value function and predict the policy actions considering agent's state as input. Figure \ref{fig:rl_cnn} describes the policy and value function parameterized with a neural network.
-
-
-
-
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\subfloat[]{\includegraphics{policy_cnn.pdf}}
 	\hfill
@@ -35,6 +28,39 @@ Deep reinforcement learning represent the combination of deep neural networks wi
 	\caption{Deep neural networks scheme: (a) predict optimal action and (b) estimate value function.}
 	\label{fig:rl_cnn}
 \end{figure}
+
+\section{Deep reinforcement learning}
+Deep reinforcement learning (DRL) represent the combination of deep neural networks with reinforcement learning framework \cite{li2017deep}. Deep neural networks estimate the value function and predict the policy actions considering agent's state as input. Figure \ref{fig:rl_cnn} describes the policy and value function parameterized with a neural network. Therefore, the goal of DRL is to find the neural network parameters that describe the optimal policy that generates the highest reward.
+
+The policy gradient method optimizes the parameters of a neural network that define the behavior of the policy, and in this way, maximize the accumulated reward \cite{sutton2018reinforcement}. The policy gradient algorithms formulate an objective function related to the accumulated reward and then use the gradient ascent method to modify the parameters of the neural network~\cite{thomas2017policy}. A general objective function is given by
+
+\begin{equation*}
+	L(\theta) = \expectation \left[ \mathrm{log} \pi_\theta (a|s) \advantage  \right],			
+\end{equation*}
+with,
+\begin{equation*}
+	\advantage = V^{\pi_{\theta}}_{t}  - \hat{V}_{t}, 
+\end{equation*}
+\noindent where $\advantage$ is advantage function, $V^{\pi_{\theta}}_{t}$ is accumulated reward following policy $(\pi_\theta)$ and $\hat{V}_{t}$ is expected accumulated reward by the neural network.
+
+
+\section{Proximal policy optimization}
+PPO is a recent policy gradient method that strikes a good balance between rapid implementation and efficiency \cite{schulman2017proximal}. The objective function of PPO seeks to maximize accumulated reward, minimize estimation error of value function and explore different sequence of actions. For this purpose, 
+
+
+\begin{equation*}
+	L^{\mathrm{PPO}}(\theta) = \expectation \left[  L^{\mathrm{CLIP}}(\theta) - c_1 L^{\mathrm{VF}}(\theta)  + c_2 S[\pi_\theta](s_t)  \right],			
+\end{equation*}	
+with,
+\begin{equation*}
+	L^{\mathrm{VF}}(\theta) = \left( V_\theta (s_t) - V^{\mathrm{target}}_{t}  \right)^{2},
+\end{equation*}			
+
+\begin{equation*}
+	L^{\mathrm{CLIP}}(\theta) = \expectation \left[ \mathrm{min} \left(  r_{t}(\theta)  \advantage,  \mathrm{clip} (r_{t}(\theta) , 1-\epsilon, 1+\epsilon) \advantage  \right)  \right],			
+\end{equation*}	
+
+
 
 %the development of a bipedal robot controller, made in the simulator for multi-body dynamics MuJoCo, with the use of the deep reinforcement learning algorithms class Proximal Policy Optimization (PPO). In addition, an analysis will be carried out on the joints of the robots to understand the degree of importance of each one of them in the gait learning process.
 

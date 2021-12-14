@@ -2,20 +2,39 @@
 \section{Reinforcement learning method}
 The reinforcement learning method trains an agent to take the optimal sequence of decisions \cite{sutton2018reinforcement}. The learning process uses positive and negative reinforcement to increase or decrease the probability of choosing an specific action. In this sense, the agent learns, through an iterative process, to make the sequence of decisions that maximizes the amount of reward that he will receive \cite{sutton2018reinforcement}.
 
-The framework of reinforcement learning is formed by four elements: (i) agent, (ii) actions, (iii) environment, and (iv) states and rewards \cite{sutton2018reinforcement}. Figure \ref{fig:RL_framework} describes the reinforcement learning framework for the application that a mobile robot must reach the desired position. First, an agent is the entity who takes decisions based on the reward and punishment that he will receive. Second, action space are all the available actions that the agent could use to interact with the environment. Third, the environment is the space where the agent lives and interact. Fourth,  the new agent's state after applying an action in the environment and the reward associated with that specific action. This process will be repeated several times until the agent learns a successful strategy to interact with the environment and maximize the reward.
-
-In reinforcement learning, the agent's strategies are called policies and indicate which actions the agent should chooses in each state \cite{sutton2018reinforcement}. Policies are usually stochastic to consider the uncertainties and probabilities of real world \cite{tedrake2004stochastic}.  In this way, policies assign a probability to each action and the agent chooses the action with the highest probability. Hence, the objective of reinforcement learning algorithms is find the optimal policy that maximize the amount of reward. 
-
-A standard
-
-\begin{figure}[t!]
+\begin{figure}[h!]
 	\centering
 	\includegraphics{reinforcement_learning_diagram.pdf}
 	\caption{Reinforced learning framework for the application that a mobile robot must reach the desired position. In this example, the agent's actions are up, down, right and left; likewise, the agent's objective is reach the green cell and the agent fails when reach the red cell.}
 	\label{fig:RL_framework}
 \end{figure}
 
+The framework of reinforcement learning is formed by four elements: (i) agent, (ii) actions, (iii) environment, and (iv) states and rewards \cite{sutton2018reinforcement}. Figure \ref{fig:RL_framework} describes the reinforcement learning framework for the application that a mobile robot must reach the desired position. First, an agent is the entity who takes decisions based on the reward and punishment that he will receive. Second, action space are all the available actions that the agent could use to interact with the environment. Third, the environment is the space where the agent lives and interact. Fourth,  the new agent's state after applying an action in the environment and the reward associated with that specific action. This process will be repeated several times until the agent learns a successful strategy to interact with the environment and maximize the reward.
+
+In reinforcement learning, the agent's strategy is called policy ($\pi(s|a)$) and indicates which actions the agent should chooses in each state \cite{sutton2018reinforcement}. Policies are usually stochastic to consider the uncertainties and probabilities of real world \cite{tedrake2004stochastic}.  In this way, policies assign a probability of success to each action, and the agent chooses the action with the highest probability. Hence, the objective of reinforcement learning algorithms is to find the optimal policy that maximizes the amount of reward. 
+
+The sum of the accumulated rewards from an initial state $s_t$ is the standard way of quantifying how good or bad the policy is \cite{sutton2018reinforcement}. This quality parameter is called value function ($V^{\pi}(s_t)$) and indicates the discounted sum of rewards that an agent will obtain starting in state $s_t$ and following the policy $\pi$ \cite{sutton2018reinforcement}. The value function can be computed as
+\begin{equation*}
+	V^{\pi}(s_t= s) = E_{\pi}  \left[r_t + \gamma r_{t+1} + \gamma^{2} r_{t+2}+ . . . | s_t = s \right],
+\end{equation*}
+\noindent where $r_t$ is the reward at time $t$, $\gamma$ is a discounted term and $s_t$ is the initial agent's state. However, calculating the value function requires the agent to start in all available states of the environment and in complex activities this can require a large amount of storage and computational cost. For this reason, more recent work uses deep neural networks to estimate the value function and optimal policy \cite{henderson2018deep}.
+
+
+
 \section{Deep reinforcement learning}
+Deep reinforcement learning represent the combination of deep neural networks with reinforcement learning framework \cite{li2017deep}. Deep neural networks estimate the value function and predict the policy actions considering agent's state as input. Figure \ref{fig:rl_cnn} describes the policy and value function parameterized with a neural network.
+
+
+
+
+\begin{figure}
+	\centering
+	\subfloat[]{\includegraphics{policy_cnn.pdf}}
+	\hfill
+	\subfloat[]{\includegraphics{value_function_cnn.pdf}}
+	\caption{Deep neural networks scheme: (a) predict optimal action and (b) estimate value function.}
+	\label{fig:rl_cnn}
+\end{figure}
 
 %the development of a bipedal robot controller, made in the simulator for multi-body dynamics MuJoCo, with the use of the deep reinforcement learning algorithms class Proximal Policy Optimization (PPO). In addition, an analysis will be carried out on the joints of the robots to understand the degree of importance of each one of them in the gait learning process.
 

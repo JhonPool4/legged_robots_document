@@ -1,21 +1,28 @@
 \documentclass[conference]{IEEEtran}
 \usepackage{cite}
-\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsmath, mathtools, esvect} % math 
+\usepackage{amssymb, amsfonts, amsthm}  % math
 \usepackage{algorithmic}
-\usepackage{graphicx}
+\usepackage{graphicx, wrapfig, caption, subcaption} % figures
 \usepackage{textcomp}
-\usepackage{xcolor}
-\usepackage{lineno,hyperref}
+\usepackage{xcolor} % colour
+\usepackage{lineno,hyperref} % clickable files
 
+% ============
+%	caption setup
+%============
+\captionsetup{justification=centering}
 
-%% IEEE  style
+% ==========
+%	IEEE  style
+% ==========
 \bibliographystyle{IEEEtran}
 
 
 % ==================
 % 	document information
 % ==================
-\title{Bipedal robot walking using deep reinforcement learning}
+\title{Bipedal walking using deep reinforcement learning}
 
 \author{%
 	\begin{minipage}[c][0.05\textheight][t]{0.48\textwidth}

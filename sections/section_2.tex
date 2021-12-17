@@ -69,14 +69,14 @@ with,
 \section{Experimental setup}
 
 \subsection{Bipedal robot simulation}
-The legged robot has two legs (right and left). Likewise, each leg has three joints (ankle, knee, hip) and one joint for trunk orientation. Therefore, the robot has $14$ states considering position and velocity. Finally, the dynamic behavior of the bipedal robot is computed with the Multi-Joint dynamics with Contact (MuJoCo) physics simulator \cite{todorov2012mujoco}. Figure \ref{fig:bipedal_robot} describe the bipedal robot in a simulation environment of MuJoCo simulator.
+The legged robot has two legs (right and left). Likewise, each leg has three joints (ankle, knee, hip) and one joint for trunk orientation. Therefore, the robot has $14$ states considering position and velocity. Finally, the dynamic behavior of the bipedal robot is computed with the Multi-Joint dynamics with Contact (MuJoCo) physics simulator \cite{todorov2012mujoco}. Figure \ref{fig:bipedal_robot} describe the bipedal robot in a simulation environment.
 
 \begin{figure}
 	\centering
 	\includegraphics{bipedal_robot.pdf}
-	\caption{Bipedal robot in MuJoCo simulator. In this simulation environment, the robot has a trunk, left and right legs. Likewise, three joints in each leg (ankle, knee and hip).}
+	\caption{Bipedal robot in MuJoCo simulator. The robot has a trunk and three joints in each leg (ankle, knee and hip).}
 	\label{fig:bipedal_robot}
 \end{figure}	
 
 \subsection{Reinforcement learning: reward configuration}
-The algorithm must learn to balance the robot as it moves forward. In this sense, the algorithm must receive positive reward based on the time that it maintains the balance when walking. Hence a simple way to set up the reward system is to give positive reward until the robot loses its balance. On the one hand, we establish that the robot loses its balance when the trunk's angular position is greater than $50^{\circ}$. On the other hand, the robot receives a positive reward of +1 for each iteration that maintains balance and a reward equal to the magnitude of the linear speed of the whole body to encourage forward movement.
+The algorithm must learn to balance the robot as it moves forward. In this sense, the algorithm must be rewarded positively based on how long it can keep its balance while walking. As a result, giving positive rewards until the robot loses its balance is a simple way to set up the reward system. On the one hand, we establish that robot loses its balance when trunk's angular position exceeds $50^{\circ}$. On the other hand, robot receives a positive reward of $+1$ for each iteration that maintains balance and reward equal to magnitude of linear speed of the whole body to encourage forward movement.

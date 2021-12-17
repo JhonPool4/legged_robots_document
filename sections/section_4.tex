@@ -2,8 +2,11 @@
 
 In this work, we presented the evolution of the walking of a bipedal robot using deep reinforcement learning with proximal policy optimization. The approach was used to avoid using complex models to control the robot.
 
-\textbf{XXX} training iterations were performed. Analyzing the results of the simulations, it can be seen that the robot acquired a walk very different from that of a human being or any biped. \textbf{COLOCAR AQUI A JUSTIFICATIVA BASEADA EM REWARDS}. For example, only one leg was used at the start of training. However, as the algorithm evolved, the other leg was also used, although the walk was still unconventional for biological systems.
+The algorithm learned to coordinate the movements of the robot's legs after 70 million iterations. Analyzing the results of the simulations, it can be observed that the robot acquired a very different gait from that of a human being or any biped. The strange way of walking of the robot is related to the reward system that was established in this work. The reward system just motivates the algorithm to move forward and maintain balance, not to establish a human gait. For example, the algorithm only uses one leg at the start of training. However, as the algorithm evolves, it begins to use the other leg, although walking is still unconventional for biological systems. Finally, it was observed that during training, the robot made movements that removed its center of mass from the support polygon. This causes the robot to lose its balance in the following steps.
 
-\textbf{UM PARÁGRAFO PARA RESPONDER OUTRA HIPÓTESE}.
+As work in the future, it will be considered to keep the center mass within the support polygon to increase the stability of the system, as well as the possibility of adding muscles to achieve natural movements.
+%Analyzing the results of the simulations, it can be seen that the robot acquired a walk very different from that of a human being or any biped. \textbf{COLOCAR AQUI A JUSTIFICATIVA BASEADA EM REWARDS}. For example, only one leg was used at the start of training. However, as the algorithm evolved, the other leg was also used, although the walk was still unconventional for biological systems.
 
-For future work,  in order to make the deep reinforcement learning control approach even more promising \textbf{COLOCAR UMA MELHORIA NO TRABALHO}.
+%\textbf{UM PARÁGRAFO PARA RESPONDER OUTRA HIPÓTESE}.
+
+%For future work,  in order to make the deep reinforcement learning control approach even more promising \textbf{COLOCAR UMA MELHORIA NO TRABALHO}.

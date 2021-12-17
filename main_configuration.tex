@@ -1,4 +1,5 @@
 \documentclass[conference]{IEEEtran}
+\usepackage{fancyhdr} % page style
 \usepackage{cite} % cite scientific articles
 \usepackage{amsmath, mathtools, esvect} % math 
 \usepackage{amssymb, amsfonts, amsthm}  % math
@@ -39,3 +40,12 @@
 		\email{lucaborgonovi@usp.br}
 	\end{minipage}
 }
+
+
+% ==============
+% page settings
+% ==============
+\pagestyle{plain}
+\fancyhf{}
+\cfoot{-~\thepage~-}
+\renewcommand{\footrulewidth}{0.5pt}
